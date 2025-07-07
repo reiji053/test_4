@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>To-doリスト - ユーザ登録</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+
+<body>
+    <main>
+        <nav class="register" role="navigation" aria-label="main navigation"></nav>
+		    <div class="register-brand">
+			  <h1><a href="/">小説に触れよう</a></h1>
+		    </div>
+		</nav>
+        <h2 class="subject">新規登録</h2>
+        <section class="section">
+            <div class="container">
+                <form method="post" action="/register">
+                    <div class="field">
+                        <input class="input" type="text" name="username" placeholder="ユーザ名（3文字以上）"
+                            value="{{ form and form['username'] }}">
+                        {% if error_user %}
+                        <div style="color: red">
+                            ユーザ名が短すぎます。
+                        </div>
+                        {% endif %}
+                        {% if error_unique %}
+                        <div style="color: red">
+                            指定したユーザ名はすでに登録されています。
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="field">
+                        <input class="input" type="password" name="password" placeholder="パスワード">
+                        {% if error_password %}
+                        <div style="color: red">
+                            パスワードが必須です。
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="field">
+                        <input class="input" type="password" name="password_confirmation" placeholder="パスワード確認">
+                        {% if error_confirm %}
+                        <div style="color: red">
+                            パスワードとパスワード確認が違います。再確認してください。
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="field">
+                        <input type="submit" value="登録" class="button is-primary">
+                    </div>
+                </form>
+            </div>
+            
+        </section>
+        <nav class="register" role="navigation" aria-label="main navigation">
+                <div class="register-brand">
+                    <a href="/login">ログイン</a>
+                </div>
+        </nav> 
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>To-doリスト - ログイン</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main>
+        <nav class="login" role="navigation" aria-label="main navigation"></nav>
+		    <div class="login-brand">
+			  <h1><a href="/home">小説に触れよう</a></h1>
+		    </div>
+		</nav>
+		<h2 class="subject">ログイン</h2>
+        <section class="section">
+            <div class="container">
+                <form method="post" action="/login">
+                    <div class="field">
+                        <input class="input" type="text" name="username" placeholder="ユーザ名"
+                            value="{{ form and form['username'] }}">
+                        {% if error_user %}
+                        <div style="color: red">
+                            ユーザ名が必須です。
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="field">
+                        <input class="input" type="password" name="password" placeholder="パスワード">
+                        {% if error_password %}
+                        <div style="color: red">
+                            パスワードが必須です。
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {% if error_login %}
+                    <div style="color: red">
+                        ユーザ名またはパスワードが違います。
+                    </div>
+                    {% endif %}
+
+                    <div class="field">
+                        <input type="submit" value="ログイン" class="button is-primary">
+                    </div>
+                </form>
+            </div>
+        </section>
+	  <nav class="login" role="navigation" aria-label="main navigation"></nav>
+                <div class="login-brand">
+                    <a href="/register">新規登録</a>
+                </div>
+        </nav>
+    </main>
+</body>
+
+</html>

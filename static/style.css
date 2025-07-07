@@ -1,0 +1,186 @@
+body{
+	font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+a{
+	color: #666;
+	text-decoration: none;
+}
+a:hover{
+	color: #000;
+	text-decoration: underline;
+}
+
+.link-btn{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius : 5%;          /* 角丸       */
+	font-size     : 18pt;        /* 文字サイズ */
+	text-align    : center;      /* 文字位置   */
+	cursor        : pointer;     /* カーソル   */
+	margin-top	  : 20px;
+	margin-bottom : 50px;
+	padding       : 12px 12px;   /* 余白       */
+	background    : #f4a14e;     /* 背景色     */
+	color         : #ffffff;     /* 文字色     */
+	line-height   : 1em;         /* 1行の高さ  */
+	transition    : .3s;         /* なめらか変化 */
+	border        : 2px solid #f4a14e;    /* 枠の指定 */
+	margin-left: auto;
+    	margin-right: auto;
+    	width: 8em;
+}
+
+.link-btn:hover {
+	color         : #f4a14e;
+	background    : #ffffff;
+}
+	
+.login-brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	/* background-color: black; */
+}
+
+.register-brand {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.subject{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.section{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.button{
+	border-radius : 5%;
+	font-size     : 18pt;
+	text-align    : center;
+	cursor        : pointer;
+	padding       : 12px 12px;
+	background    : #f4a14e;
+	color         : #ffffff;
+	line-height   : 1em;
+	transition    : .3s;
+	border        : 2px solid #f4a14e;
+	margin-left: auto;
+    	margin-right: auto;
+    	width: 8em;
+}
+.button.is-primary{
+	display: flex;
+      justify-content: center;
+      align-items: center;
+	margin-top: 20px;
+}
+
+.button:hover {
+	color         : #f4a14e;
+	background    : #ffffff;
+}
+
+.book-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 24px;
+	padding: 20px;
+ }
+
+div.creater{
+	border-top:solid
+	#000 2px;
+}
+
+.book-detail {
+	display: flex;
+	gap: 20px;
+	background-color: #f9f9f9;
+	padding: 12px;
+	border-radius: 8px;
+}
+    
+.book-detail .img img {
+	width: 150px;
+	height: auto;
+}
+    
+.book-detail .creater {
+	flex: 1;
+}
+
+.input {
+	height: 48px;
+	padding: 10px 15px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	box-sizing: border-box;
+}
+
+.file{
+	height: 48px;
+	padding: 15px 15px;
+	font-size: 12px;
+	border: 1px solid #706e6e;
+	box-sizing: border-box;
+}
+
+.button-group {
+	display: flex;
+	gap: 10px;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+main.books {
+	margin: 0 auto;  
+	padding: 20px;
+	background: #fff;
+	color: #000;
+	border-radius: 8px;
+}
+  
+.field {
+	margin-bottom: 20px;
+}
+  
+.field .label {
+	font-size: 1.2em;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+  
+.field .control .story {
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 4px;
+	border: 1px solid #706e6e;
+}
+  
+input.file,
+input.button {
+	display: block;
+	margin: 20px auto;
+	padding: 10px 20px;
+	font-size: 1em;
+	border-radius: 4px;
+}

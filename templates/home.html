@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	
+<head>
+	<meta charset="utf-8">
+	<title>小説に触れよう</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+	<header>
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+		    <div class="navbar-brand">
+			 <h1><a href="/home">小説に触れよう</a></h1>
+		    </div>
+		</nav> 
+		<nav class="navbar" role="navigation" aria-label="main navigation"></nav>
+			<div class="button-group">
+				<form action="/register" method="get">
+				    <input type="submit" value="新規登録" class="button is-primary">
+				</form>
+				<form action="/login2" method="get"></form>
+				    <input type="submit" value="ログイン" class="button is-primary">
+				</form>
+			</div>
+		</nav>
+	  </header>
+	  <main>
+		<h1 class="title">小説一覧</h1>
+		<div class="book-list">
+		{% for book in books %}
+		<div class="book-detail">
+			<div class="creater">
+				<a href="/book/{{ book.id}}"><h2>{{ book.title}}</h2></a>
+				<p>{{ book.create_name}}</p>
+			</div>
+			<div class="img">
+				{% if book.img %}
+				  <img src="/static/uploads/{{ book.img }}" alt="">
+				{% else %}
+				  <img src="/static/uploads/img_noimage.gif" alt="No image">
+				{% endif %}
+			</div>
+		</div>	
+		{% endfor %}
+		</div>
+	  </main>
+</body>
+
+</html>

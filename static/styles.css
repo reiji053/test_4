@@ -1,0 +1,44 @@
+body{
+	font-family: "游ゴシック体", YuGothic, "游ゴシック Medium", "Yu Gothic Medium", "游ゴシック", "Yu Gothic", sans-serif;
+}
+
+ellipse.title{
+	color: black;
+}
+
+main{
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px 200px 0px 200px;
+}
+
+main h2{
+	text-align: center;
+}
+
+main h3{
+	text-align: center;
+}
+
+a{
+	color: #666;
+	text-decoration: none;
+}
+a:hover{
+	color: #000;
+	text-decoration: underline;
+}
+
+img{
+	display: block;
+	margin: 0 auto;
+	width: 300px;
+	height: auto;
+}
+
+.border{
+	width: 100%;
+	border: 1px solid #706e6e;
+	margin-top: 15px;
+}
