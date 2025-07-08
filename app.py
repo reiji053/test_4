@@ -17,7 +17,7 @@ HASH_ALGORITHM = "pbkdf2_sha256"
 
 # appという名前で flaskアプリケーションを作成
 app = Flask(__name__)
-# app.secret_key = b'opensesame'
+app.secret_key = b'opensesame'
 # db_url = os.environ.get("DATABASE_URL")
 # def get_db():
 # # PostgreSQLデータベースに接続
