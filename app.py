@@ -17,16 +17,22 @@ HASH_ALGORITHM = "pbkdf2_sha256"
 
 # appという名前で flaskアプリケーションを作成
 app = Flask(__name__)
-app.secret_key = b'opensesame'
+# app.secret_key = b'opensesame'
+# db_url = os.environ.get("DATABASE_URL")
+# def get_db():
+# # PostgreSQLデータベースに接続
+# #     conn = psycopg2.connect(
+# #         host="localhost",
+# #         database="todo.db",
+# #         user="reiji",
+# #         password="",  # 実際のパスワードに置き換えてください
+# #         port=5432
+# #     )
+# 	conn = psycopg2.connect(db_url, sslmode='require')
+# 	return conn
 def get_db():
-    # PostgreSQLデータベースに接続
-    conn = psycopg2.connect(
-        host="localhost",
-        database="todo.db",
-        user="reiji",
-        password="",  # 実際のパスワードに置き換えてください
-        port=5432
-    )
+    db_url = os.environ.get("DATABASE_URL")
+    conn = psycopg2.connect(db_url, sslmode='require', cursor_factory=psycopg2.extras.DictCursor)
     return conn
 
 def hash_password(password, salt=None, iterations=310000):
@@ -161,7 +167,8 @@ def index():
 	# データベースに接続
 	db = get_db()
 	with db:
-		cursor = db.cursor(cursor_factory=psycopg2.extras.DictCursor)
+		cursor = db.cursor()
+		# cursor = db.cursor(cursor_factory=psycopg2.extras.DictCursor)
 		# SQL文を実行
 		cursor.execute(query_books)
 		# 取得したデータをtasksに格納
