@@ -28,3 +28,5 @@ Jupyter Notebook (もし使う場合)
 
 IDE specific files (例: VS Code)
 .vscode/
+
+.env.local
