@@ -91,7 +91,7 @@ def login():
     try:
         with db:
             row = db.execute(
-                "SELECT * FROM users where username = ?", (username,)
+                "SELECT * FROM users where username = %s", (username,)
             ).fetchone()
 
             verified = row is not None and verify_password(
