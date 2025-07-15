@@ -119,6 +119,10 @@ def index():
     db.close()
     return render_template('index.html', books=books, users=users)
 
+@app.route('/home', methods=['GET'])
+def home_redirect():
+    return redirect(url_for("home2_html"))
+
 @app.route('/home2', endpoint='home2_html', methods=['GET'])
 def home2():
     user_id = request.args.get('user_id')
