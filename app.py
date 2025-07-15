@@ -121,7 +121,10 @@ def index():
 
 @app.route('/home', methods=['GET'])
 def home_redirect():
-    return redirect(url_for("home2_html"))
+    if "user_id" in session:
+        return redirect(url_for("home2_html"))  # ログインしていれば home2 へ
+    else:
+        return redirect(url_for("index"))
 
 @app.route('/home2', endpoint='home2_html', methods=['GET'])
 def home2():
