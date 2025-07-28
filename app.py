@@ -122,7 +122,7 @@ def index():
 @app.route('/home', methods=['GET'])
 def home_redirect():
     if "user_id" in session:
-        return redirect(url_for("home2_html"))  # ログイン済み → home2
+        return redirect(url_for("home2_html"))
     else:
         return render_template("home.html")
 
