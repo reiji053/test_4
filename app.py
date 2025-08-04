@@ -201,15 +201,3 @@ def book(post_id):
         books = cursor.fetchall()
     db.close()
     return render_template('book.html', books=books)
-
-@app.route('/delete_books', methods=['POST'])
-def delete_books():
-    db = get_db()
-    try:
-        with db:
-            cursor = db.cursor()
-            cursor.execute("TRUNCATE TABLE books RESTART IDENTITY")
-            db.commit()
-    finally:
-        db.close()
-    return redirect(url_for('home2_html'))
