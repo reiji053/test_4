@@ -104,31 +104,16 @@ def register():
 
 @app.route('/', methods=['GET'])
 def index():
-    user_id = request.args.get('user_id')
-    query_books = "SELECT id, title, episord_title, main_text, create_name FROM books"
-    if user_id:
-        query_books += f" WHERE user_id = {user_id}"
-
-    db = get_db()
-    with db:
-        cursor = db.cursor()
-        cursor.execute(query_books)
-        books = cursor.fetchall()
-        cursor.execute("SELECT id, username FROM users")
-        users = cursor.fetchall()
-    db.close()
-    return render_template('index.html', books=books, users=users)
+  return redirect(url_for("home_redirect"))
 
 @app.route('/home', methods=['GET'])
 def home_redirect():
-    if "user_id" in session:
-        return redirect(url_for("home2_html"))
-    else:
-        return render_template("home.html")
+    # 🔽 ゲストユーザー用のトップページ
+    return render_template("home.html")
 
 @app.route('/home2', endpoint='home2_html', methods=['GET'])
 def home2():
-    user_id = request.args.get('user_id')
+    user_id = session.get("user_id")
     query_books = "SELECT id, title, episord_title, main_text, create_name, img FROM books"
     if user_id:
         query_books += f" WHERE user_id = {user_id}"
