@@ -191,40 +191,6 @@ def create():
 
         return redirect(url_for('home2_html'))
     return render_template('create.html')
-# @app.route('/create', methods=['GET', 'POST'])
-# def create():
-#     if request.method == 'POST':
-#         create_name = request.form.get('create_name')
-#         title = request.form.get('title')
-#         episord_title = request.form.get('episord_title')
-#         main_text = request.form.get('main_text')
-
-#         file = request.files.get('img')
-#         if not file or file.filename == '':
-#             return '画像ファイルが選択されていません', 400
-
-#         file_path = os.path.join(UPLOAD_FOLDER, file.filename)
-#         file.save(file_path)
-
-#         db = get_db()
-#         try:
-#             with db:
-#                 cursor = db.cursor()
-#                 user_id = session.get("user_id")
-#                 if not user_id:
-#                     return redirect(url_for("login_form"))
-
-#                 cursor.execute("""
-#                     INSERT INTO books (user_id, create_name, title, episord_title, main_text, create_at, img)
-#                     VALUES (%s, %s, %s, %s, %s, %s, %s)
-#                 """, (user_id, create_name, title, episord_title, main_text, datetime.now(), file.filename))
-#                 db.commit()
-#         finally:
-#             db.close()
-
-#         return redirect(url_for('home2_html'))
-#     return render_template('create.html')
-
 
 @app.route('/book/<post_id>', methods=['GET'])
 def book(post_id):
@@ -236,3 +202,14 @@ def book(post_id):
     db.close()
     return render_template('book.html', books=books)
 
+@app.route('/delete_books', methods=['POST'])
+def delete_books():
+    db = get_db()
+    try:
+        with db:
+            cursor = db.cursor()
+            cursor.execute("TRUNCATE TABLE books RESTART IDENTITY")
+            db.commit()
+    finally:
+        db.close()
+    return redirect(url_for('home2_html'))
