@@ -56,12 +56,15 @@
     <h2 class="episord_title">{{ books[0].episord_title }}</h2>
 
     {% for book in books %}
-      {% if book.img %}
-        <img src="{{ book.img }}" alt="画像" style="max-width: 100%; height: auto;">
-      {% else %}
-        <img src="/static/uploads/img_noimage.gif" alt="No image">
-      {% endif %}
-    {% endfor %}
+  <div>
+    <h2>{{ book.title }}</h2>
+    {% if book.img %}
+      <img src="{{ url_for('static', filename='uploads/' + book.img) }}" alt="Book Image" style="max-width:200px;">
+    {% else %}
+      <p>画像なし</p>
+    {% endif %}
+  </div>
+{% endfor %}
 
     <div class="border"></div>
 

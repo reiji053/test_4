@@ -75,21 +75,23 @@
 	<main>
 		<h1 class="title">小説一覧</h1>
 		<div class="book-list">
-			{% for book in books %}
+		{% for book in books %}
 			<div class="book-detail">
 				<div class="creater">
 					<a href="/book/{{ book.id }}"><h2>{{ book.title }}</h2></a>
 					<p>{{ book.create_name }}</p>
 				</div>
 				<div class="img">
-					{% if book.img %}
-						<img src="{{ book.img }}" alt="book image">
+					{% if book.img.startswith('data:') %}
+						<img src="{{ book.img }}" alt="Base64 image">
+					{% elif book.img %}
+						<img src="/static/uploads/{{ book.img }}" alt="File image">
 					{% else %}
 						<img src="/static/uploads/img_noimage.gif" alt="No image">
 					{% endif %}
 				</div>
 			</div>	
-			{% endfor %}
+		{% endfor %}
 		</div>
 	</main>
 </body>

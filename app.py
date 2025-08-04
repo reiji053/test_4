@@ -1,4 +1,3 @@
-print("Flask app module loaded")
 from flask import Flask, render_template, request, session, url_for, redirect
 from datetime import datetime
 import base64
@@ -53,6 +52,10 @@ def logout():
 @app.route("/login", methods=["GET"])
 def login_form():
     return render_template("login.html")
+
+@app.route("/login2", methods=["GET"])
+def login2():
+    return render_template("login2.html")
 
 
 @app.route("/login", methods=["POST"])
@@ -114,12 +117,25 @@ def register():
 
 @app.route('/', methods=['GET'])
 def index():
-    return redirect(url_for("home_redirect"))
+    return render_template("index.html")
 
 
 @app.route('/home', methods=['GET'])
 def home_redirect():
-    return render_template("home.html")
+    user_id = session.get("user_id")
+    query_books = "SELECT id, title, episord_title, main_text, create_name, img FROM books"
+    if user_id:
+        query_books += f" WHERE user_id = {user_id}"
+
+    db = get_db()
+    with db:
+        cursor = db.cursor()
+        cursor.execute(query_books)
+        books = cursor.fetchall()
+        cursor.execute("SELECT id, username FROM users")
+        users = cursor.fetchall()
+    db.close()
+    return render_template('home.html', books=books, users=users)
 
 
 @app.route('/home2', endpoint='home2_html', methods=['GET'])
